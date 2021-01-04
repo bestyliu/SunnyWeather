@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sunnyweather.R
 import com.example.sunnyweather.logic.model.Place
 import com.example.sunnyweather.ui.weather.WeatherActivity
-import kotlinx.android.synthetic.main.place_item.view.*
+import kotlinx.android.synthetic.main.activity_weather.*
 
 class PlaceAdapter(private val fragment: Fragment, private val placeList: List<Place>) :
         RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
@@ -27,8 +27,8 @@ class PlaceAdapter(private val fragment: Fragment, private val placeList: List<P
             val position = holder.adapterPosition
             val place = placeList[position]
             val intent = Intent(parent.context, WeatherActivity::class.java). apply {
-                putExtra("location_lng", place.location.longitude)
-                putExtra("location_lat", place.location.latitude)
+                putExtra("location_lng", place.location.lng)
+                putExtra("location_lat", place.location.lat)
                 putExtra("place_name", place.name)
             }
             fragment.startActivity(intent)
