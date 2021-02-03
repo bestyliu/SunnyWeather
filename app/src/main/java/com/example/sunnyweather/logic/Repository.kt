@@ -27,7 +27,7 @@ object Repository {
         emit(result)
     }
     fun refreshWeather(lng : String, lat : String) = liveData(Dispatchers.IO) {
-        val result = try {
+        val result1 = try {
             coroutineScope {
                 val deferredRealtime = async {
                     SunnyWeatherNetwork.getRealtimeWeather(lng, lat)
@@ -51,7 +51,7 @@ object Repository {
         } catch (e : Exception) {
             Result.failure<Weather>(e)
         }
-        emit(result)
+        emit(result1)
     }
     fun savePlace(place : Place) = PlaceDao.savePlace(place)
     fun getSavedPlace() = PlaceDao.getSavedPlace()
